@@ -30,24 +30,43 @@ function addTask() {
 
     const li = document.createElement("li");
 
+    /* Tick Button */
+    const tickBtn = document.createElement("button");
+    tickBtn.textContent = "✅";
+    tickBtn.className = "tick-btn";
+
+    /* Task Text */
     const span = document.createElement("span");
     span.textContent = taskText;
+    span.className = "task-text";
 
-    span.addEventListener("click", function () {
-        span.classList.toggle("completed");
-        updateCounter();
-    });
-
+    /* Delete Button */
     const delBtn = document.createElement("button");
     delBtn.textContent = "❌";
+
+    function toggleComplete() {
+        span.classList.toggle("completed");
+        tickBtn.classList.toggle("done");
+        updateCounter();
+    }
+
+    /* Click events */
+    tickBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        toggleComplete();
+    });
+
+    span.addEventListener("click", toggleComplete);
 
     delBtn.addEventListener("click", function () {
         li.remove();
         updateCounter();
     });
 
+    li.appendChild(tickBtn);
     li.appendChild(span);
     li.appendChild(delBtn);
+
     taskList.appendChild(li);
 
     input.value = "";
