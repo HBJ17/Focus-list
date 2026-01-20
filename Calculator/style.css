@@ -70,10 +70,3 @@ input:hover {
     background: linear-gradient(145deg, #d50000, #ff1744);
     box-shadow: 0 0 10px #ff1744;
 }
-
-.Display {
-    grid-column: span 4;
-    height: 70px;
-    font-size: 28px;
-    padding: 10px;
-}
